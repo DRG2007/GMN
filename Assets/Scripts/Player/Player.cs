@@ -37,15 +37,13 @@ namespace GMN.Player
             if(onGround && pVelocity.y < 0)
             {
                 pVelocity.y = 0f;
-            } else if(!onGround)
+            } 
+            if (onGround && Input.GetButton("Jump"))
             {
-                pVelocity.y += gravity * Time.deltaTime;
+                pVelocity.y += 6f;
             }
 
-            if (onGround && Input.GetButtonDown("Jump"))
-            {
-                pVelocity.y += 10f * Time.deltaTime;
-            }
+            pVelocity.y += gravity * Time.deltaTime;
 
             character.Move(pVelocity * Time.deltaTime);
 
