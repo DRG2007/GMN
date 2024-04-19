@@ -37,7 +37,7 @@ namespace GMN.Player
             if(onGround && pVelocity.y < 0)
             {
                 pVelocity.y = 0f;
-            } else 
+            } else if(!onGround)
             {
                 pVelocity.y += gravity * Time.deltaTime;
             }
