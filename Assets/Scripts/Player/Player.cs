@@ -28,11 +28,11 @@ namespace GMN.Player
                 playerMove = transform.forward * inputStrength;
             }
             
-            Vector3 playerRot = new Vector3(0, Input.GetAxis("Horizontal"), 0);
+            Vector3 playerRot = new Vector3(0, Input.GetAxis("Horizontal") * Time.deltaTime, 0);
 
             character.Move(playerMove * Time.deltaTime * 6f);
 
-            transform.Rotate(playerRot);
+            transform.Rotate(playerRot * 132f);
 
             if(onGround && pVelocity.y < 0)
             {
