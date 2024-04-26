@@ -30,7 +30,18 @@ namespace GMN.Global
 
         public static void Setup()
         {
-            if(PlayerPrefs.GetInt(FirstTimeRunString, 0) == 0)
+            #if UNITY_EDITOR
+             firstTimeRun = 1;
+             hasCompletedTutorial = 0;
+             levelsCompleted = 0;
+             PlayerPrefs.SetInt(HasCompletedTutorialString, hasCompletedTutorial);
+             PlayerPrefs.SetInt(levelsCompletedString, levelsCompleted);
+             PlayerPrefs.SetInt(FirstTimeRunString, FirstTimeRun);
+
+
+             PlayerPrefs.Save();
+            #endif
+            if (PlayerPrefs.GetInt(FirstTimeRunString, 0) == 0)
             {
                 firstTimeRun = 1;
                 hasCompletedTutorial = 0;
@@ -38,6 +49,8 @@ namespace GMN.Global
                 PlayerPrefs.SetInt(HasCompletedTutorialString, hasCompletedTutorial);
                 PlayerPrefs.SetInt(levelsCompletedString, levelsCompleted);
                 PlayerPrefs.SetInt(FirstTimeRunString, FirstTimeRun);
+
+
                 PlayerPrefs.Save();
                 
             }

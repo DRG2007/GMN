@@ -10,7 +10,11 @@ namespace GMN.Local
         // Start is called before the first frame update
 
         private int currentlySelectedLevel;
-        private GameObject menuButtons; 
+        private GameObject menuButtons;
+        public GameObject StoryIntro;
+        public GameObject HelpIntro;
+        public GameObject SelectGroup;
+        public GameObject StartButton;
         void Start()
         {
             GameState.Setup();
@@ -29,6 +33,20 @@ namespace GMN.Local
         public void NextButton()
         {
             Debug.Log("Next button works");
+        }
+
+        public void ExitStory()
+        {
+            StoryIntro.SetActive(false);
+            HelpIntro.SetActive(true);
+        }
+
+        public void ExitHelp()
+        {
+            HelpIntro.SetActive(false);
+            GameState.CompleteTutorial();
+            StartButton.SetActive(true);
+            SelectGroup.SetActive(true);
         }
 
     }

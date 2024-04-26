@@ -6,12 +6,14 @@ using GMN.Global;
 using static GMN.Global.GameState;
 public class StartButton : MonoBehaviour
 {
+    public GameObject gameObjecto;
 
     public void PlayGame()
     {
         if(PlayerPrefs.GetInt(HasCompletedTutorialString, 0) == 0)
         {
-            SceneManager.LoadScene("Tutorial");
+            gameObjecto.SetActive(true);
+            gameObject.SetActive(false);
         }
     }
 
