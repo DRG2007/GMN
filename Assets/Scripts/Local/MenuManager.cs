@@ -15,6 +15,8 @@ namespace GMN.Local
         public GameObject HelpIntro;
         public GameObject SelectGroup;
         public GameObject StartButton;
+        public GameObject PowerMenu;
+        public GameObject PowerMenuButton;
         void Start()
         {
             GameState.Setup();
@@ -22,6 +24,8 @@ namespace GMN.Local
             {
                 menuButtons = GameObject.Find("SelectGroup");
                 menuButtons.SetActive(true);
+                SelectGroup.SetActive(true);
+                PowerMenuButton.SetActive(true);
             }
         }
 
@@ -47,6 +51,23 @@ namespace GMN.Local
             GameState.CompleteTutorial();
             StartButton.SetActive(true);
             SelectGroup.SetActive(true);
+            PowerMenuButton.SetActive(true);
+        }
+
+        public void EnterPowerMenu()
+        {
+            StartButton.SetActive(false);
+            SelectGroup.SetActive(false);
+            PowerMenu.SetActive(true);
+            PowerMenuButton.SetActive(false);
+        }
+
+        public void ExitPowerMenu()
+        {
+            StartButton.SetActive(true);
+            SelectGroup.SetActive(true);
+            PowerMenu.SetActive(false);
+            PowerMenuButton.SetActive(true);
         }
 
     }
