@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Data;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 namespace GMN.Global
 {
@@ -31,14 +32,8 @@ namespace GMN.Global
         public static void Setup()
         {
             #if UNITY_EDITOR
-             firstTimeRun = 1;
-             hasCompletedTutorial = 0;
-             levelsCompleted = 0;
-             PlayerPrefs.SetInt(HasCompletedTutorialString, hasCompletedTutorial);
-             PlayerPrefs.SetInt(levelsCompletedString, levelsCompleted);
+             firstTimeRun = 0;
              PlayerPrefs.SetInt(FirstTimeRunString, FirstTimeRun);
-
-
              PlayerPrefs.Save();
             #endif
             if (PlayerPrefs.GetInt(FirstTimeRunString, 0) == 0)
@@ -46,6 +41,9 @@ namespace GMN.Global
                 firstTimeRun = 1;
                 hasCompletedTutorial = 0;
                 levelsCompleted = 0;
+                #if UNITY_EDITOR
+                levelsCompleted = 3;
+                #endif 
                 PlayerPrefs.SetInt(HasCompletedTutorialString, hasCompletedTutorial);
                 PlayerPrefs.SetInt(levelsCompletedString, levelsCompleted);
                 PlayerPrefs.SetInt(FirstTimeRunString, FirstTimeRun);
@@ -75,6 +73,8 @@ namespace GMN.Global
                 PlayerPrefs.Save();
             }
         }
+
+        
 
 
     }
